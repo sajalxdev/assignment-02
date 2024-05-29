@@ -8,7 +8,7 @@ const createProductInDB = async (productData: TProduct) => {
 };
 
 const getAllProductsFromDB = async (searchTerm: string) => {
-  // regex search
+  // case-insensitive search for name, description, and category
   const products = await Product.find({
     $or: [
       { name: { $regex: searchTerm, $options: "i" } },

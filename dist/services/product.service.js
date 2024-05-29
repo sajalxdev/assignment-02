@@ -19,7 +19,7 @@ const createProductInDB = (productData) => __awaiter(void 0, void 0, void 0, fun
     return product;
 });
 const getAllProductsFromDB = (searchTerm) => __awaiter(void 0, void 0, void 0, function* () {
-    // regex search
+    // case-insensitive search for name, description, and category
     const products = yield product_model_1.default.find({
         $or: [
             { name: { $regex: searchTerm, $options: "i" } },
