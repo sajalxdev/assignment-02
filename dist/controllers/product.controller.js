@@ -55,7 +55,32 @@ const getAllProducts = (req, res) => __awaiter(void 0, void 0, void 0, function*
         });
     }
 });
+const getProductById = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const productId = req.params.id;
+        const product = yield product_service_1.productServices.getProductByIdFromDB(productId);
+        if (!product) {
+            return res.status(404).json({
+                success: false,
+                message: "Product not found",
+            });
+        }
+        res.status(200).json({
+            success: true,
+            message: "Product fetched successfully",
+            data: product,
+        });
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).json({
+            success: false,
+            error: "Internal server error",
+        });
+    }
+});
 exports.productControllers = {
     createProduct,
     getAllProducts,
+    getProductById,
 };

@@ -10,4 +10,5 @@ productRouter
     .route("/")
     .post(product_controller_1.productControllers.createProduct)
     .get(product_controller_1.productControllers.getAllProducts);
+productRouter.route("/:id").get(product_controller_1.productControllers.getProductById);
 exports.default = productRouter;
