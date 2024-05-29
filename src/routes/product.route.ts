@@ -8,6 +8,9 @@ productRouter
   .post(productControllers.createProduct)
   .get(productControllers.getAllProducts);
 
-productRouter.route("/:id").get(productControllers.getProductById);
+productRouter
+  .route("/:id")
+  .get(productControllers.getProductById)
+  .delete(productControllers.deleteProductById);
 
 export default productRouter;
