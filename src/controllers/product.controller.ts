@@ -33,6 +33,25 @@ const createProduct = async (req: Request, res: Response) => {
   }
 };
 
+const getAllProducts = async (req: Request, res: Response) => {
+  try {
+    const products = await productServices.getAllProductsFromDB();
+
+    res.status(200).json({
+      success: true,
+      message: "Products fetched successfully",
+      data: products,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      success: false,
+      error: "Internal server error",
+    });
+  }
+};
+
 export const productControllers = {
   createProduct,
+  getAllProducts,
 };

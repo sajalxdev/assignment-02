@@ -38,6 +38,24 @@ const createProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* 
         });
     }
 });
+const getAllProducts = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const products = yield product_service_1.productServices.getAllProductsFromDB();
+        res.status(200).json({
+            success: true,
+            message: "Products fetched successfully",
+            data: products,
+        });
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).json({
+            success: false,
+            error: "Internal server error",
+        });
+    }
+});
 exports.productControllers = {
     createProduct,
+    getAllProducts,
 };
