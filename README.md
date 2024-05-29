@@ -29,7 +29,7 @@ Create a .env file in the root directory and add your environment variables:
 
 ```
 PORT=5000
-MONGODB_URI=mongodb+srv://<username>:<password>@cluster0.04sww6i.mongodb.net/<dbname>?retryWrites=true&w=majority
+DATABASE_URL=mongodb+srv://<username>:<password>@cluster0.04sww6i.mongodb.net/<dbname>?retryWrites=true&w=majority
 ```
 
 **4. Run the Applocation**
