@@ -14,6 +14,15 @@ app.use((0, cors_1.default)());
 app.use("/api/products", product_route_1.default);
 app.use("/api/orders", order_route_1.default);
 app.get("/", (req, res) => {
-    res.send("Hello World");
+    res.json({
+        success: true,
+        message: "Welcome to the E-commerce API 🚀",
+    });
+});
+app.get("*", (req, res) => {
+    res.status(404).json({
+        success: false,
+        message: "Route not found",
+    });
 });
 exports.default = app;

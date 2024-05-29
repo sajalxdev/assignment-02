@@ -53,6 +53,27 @@ const createOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         });
     }
 });
+const getAllOrders = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const email = req.query.email;
+        const orders = yield order_service_1.orderServices.getAllOrdersFromDB(email);
+        res.status(200).json({
+            success: true,
+            message: email
+                ? "Orders fetched successfully for user email!"
+                : "Orders fetched successfully",
+            data: orders,
+        });
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).json({
+            success: false,
+            error: "Orders not found",
+        });
+    }
+});
 exports.orderController = {
     createOrder,
+    getAllOrders,
 };

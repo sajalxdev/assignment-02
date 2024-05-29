@@ -23,6 +23,14 @@ const createOrderInDB = (orderData, newQuantity) => __awaiter(void 0, void 0, vo
     });
     return order;
 });
+const getAllOrdersFromDB = (email) => __awaiter(void 0, void 0, void 0, function* () {
+    let query = {};
+    if (email)
+        query.email = email;
+    const orders = yield order_model_1.default.find(query);
+    return orders;
+});
 exports.orderServices = {
     createOrderInDB,
+    getAllOrdersFromDB,
 };

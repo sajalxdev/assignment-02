@@ -13,6 +13,19 @@ const createOrderInDB = async (orderData: TOrder, newQuantity: number) => {
   return order;
 };
 
+const getAllOrdersFromDB = async (email: string) => {
+  let query: {
+    email?: string;
+  } = {};
+
+  if (email) query.email = email;
+
+  const orders = await Order.find(query);
+
+  return orders;
+};
+
 export const orderServices = {
   createOrderInDB,
+  getAllOrdersFromDB,
 };
